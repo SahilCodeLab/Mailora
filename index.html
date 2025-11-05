@@ -3,22 +3,12 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>Mailora - Write Professional Emails in Multiple Languages</title>
-    <meta name="description" content="Mailora - AI-powered email generator that creates professional, human-like emails in multiple languages. Perfect for global business communication.">
-    <meta name="keywords" content="email generator, AI email, professional emails, multi-language, business communication">
-    
-    <!-- Tailwind CSS -->
+    <title>Mailora - Write Professional Emails</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect"/>
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✉️</text></svg>">
-    
     <script>
         tailwind.config = {
             darkMode: "class",
@@ -27,29 +17,15 @@
                     colors: {
                         "primary": "#2B3A67",
                         "secondary": "#4682B4",
-                        "accent": "#FF6B35",
                         "background-light": "#F8F9FA",
                         "background-dark": "#101c22",
                         "text-light": "#333333",
                         "text-dark": "#F8F9FA",
                         "border-light": "#E0E0E0",
                         "border-dark": "#3a4a52",
-                        "success": "#10B981",
-                        "warning": "#F59E0B",
-                        "error": "#EF4444"
                     },
                     fontFamily: {
                         "display": ["Inter", "sans-serif"]
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.5rem",
-                        "lg": "0.75rem",
-                        "xl": "1rem",
-                        "full": "9999px"
-                    },
-                    animation: {
-                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'bounce-slow': 'bounce 2s infinite'
                     }
                 },
             },
@@ -59,7 +35,6 @@
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24
         }
-        
         .loading {
             display: inline-block;
             width: 20px;
@@ -69,225 +44,93 @@
             border-top-color: #fff;
             animation: spin 1s ease-in-out infinite;
         }
-        
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
-        
         .toast {
             position: fixed;
             bottom: 20px;
             right: 20px;
             padding: 12px 20px;
+            background-color: #4CAF50;
             color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
             opacity: 0;
-            transition: all 0.3s ease;
+            transition: opacity 0.3s;
             z-index: 1000;
-            max-width: 400px;
         }
-        
         .toast.show {
             opacity: 1;
-            transform: translateY(-10px);
         }
-        
-        .toast.success {
-            background: linear-gradient(135deg, #10B981, #059669);
-        }
-        
         .toast.error {
-            background: linear-gradient(135deg, #EF4444, #DC2626);
+            background-color: #f44336;
         }
-        
         .toast.warning {
-            background: linear-gradient(135deg, #F59E0B, #D97706);
-        }
-        
-        .toast.info {
-            background: linear-gradient(135deg, #3B82F6, #2563EB);
-        }
-        
-        .fade-in {
-            animation: fadeIn 0.5s ease-in;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .gradient-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-        
-        .language-flag {
-            width: 20px;
-            height: 15px;
-            display: inline-block;
-            margin-right: 8px;
-            border-radius: 2px;
-            background-size: cover;
-        }
-        
-        /* Ad Container Styles */
-        .ad-container {
-            background: #f8f9fa;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 15px;
-            margin: 20px 0;
-            text-align: center;
-        }
-        
-        .ad-label {
-            font-size: 0.75rem;
-            color: #666;
-            text-transform: uppercase;
-            margin-bottom: 8px;
+            background-color: #ff9800;
         }
     </style>
 </head>
 <body class="font-display bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark">
     <div class="relative flex min-h-screen w-full flex-col">
-        <!-- Top Nav Bar -->
-        <header class="sticky top-0 z-50 flex items-center justify-center border-b border-solid border-border-light dark:border-border-dark bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-sm">
-            <div class="flex w-full max-w-7xl items-center justify-between whitespace-nowrap px-4 py-3">
-                <div class="flex items-center gap-3">
-                    <div class="size-8 text-primary">
-                        <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <header class="sticky top-0 z-50 flex items-center justify-center border-b border-solid border-border-light dark:border-border-dark bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm">
+            <div class="flex w-full max-w-6xl items-center justify-between whitespace-nowrap px-4 py-3">
+                <div class="flex items-center gap-4">
+                    <div class="size-6 text-primary">
+                        <svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
                             <path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" fill="currentColor"></path>
                         </svg>
                     </div>
-                    <div>
-                        <h2 class="text-xl font-bold leading-tight tracking-[-0.015em] text-[#000] dark:text-[#fff]">Mailora</h2>
-                        <p class="text-xs text-text-light/70 dark:text-text-dark/70">Global Email Assistant</p>
-                    </div>
+                    <h2 class="text-lg font-bold leading-tight tracking-[-0.015em] text-[#000] dark:text-[#fff]">Mailora</h2>
                 </div>
-                
-                <div class="hidden items-center gap-8 md:flex">
-                    <a class="text-sm font-medium leading-normal text-text-light dark:text-text-dark hover:text-primary transition-colors" href="#features">Features</a>
-                    <a class="text-sm font-medium leading-normal text-text-light dark:text-text-dark hover:text-primary transition-colors" href="#pricing">Pricing</a>
-                    <a class="text-sm font-medium leading-normal text-text-light dark:text-text-dark hover:text-primary transition-colors" href="#testimonials">Testimonials</a>
-                    <a class="text-sm font-medium leading-normal text-text-light dark:text-text-dark hover:text-primary transition-colors" href="#contact">Contact</a>
+                <div class="hidden items-center gap-9 md:flex">
+                    <a class="text-sm font-medium leading-normal text-text-light dark:text-text-dark hover:text-primary" href="#">About</a>
+                    <a class="text-sm font-medium leading-normal text-text-light dark:text-text-dark hover:text-primary" href="#">Pricing</a>
+                    <a class="text-sm font-medium leading-normal text-text-light dark:text-text-dark hover:text-primary" href="#">Contact</a>
                 </div>
-                
-                <div class="flex items-center gap-4">
-                    <!-- Language Selector -->
-                    <select id="global-language" class="form-select h-9 appearance-none rounded-lg border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark/50 px-3 text-sm font-normal leading-normal focus:border-primary focus:ring-primary/50">
-                        <option value="en">🌐 English</option>
-                        <option value="es">🇪🇸 Español</option>
-                        <option value="fr">🇫🇷 Français</option>
-                        <option value="de">🇩🇪 Deutsch</option>
-                        <option value="hi">🇮🇳 हिन्दी</option>
-                        <option value="ja">🇯🇵 日本語</option>
-                        <option value="zh">🇨🇳 中文</option>
-                        <option value="ar">🇸🇦 العربية</option>
-                        <option value="pt">🇵🇹 Português</option>
-                        <option value="ru">🇷🇺 Русский</option>
-                    </select>
-                    
-                    <!-- Theme Toggle -->
-                    <button id="theme-toggle" class="flex size-9 items-center justify-center rounded-lg border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark/50 hover:bg-gray-100 dark:hover:bg-background-dark/80 transition-colors">
-                        <span class="material-symbols-outlined text-lg text-text-light dark:text-text-dark/80">dark_mode</span>
-                    </button>
-                    
-                    <button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:opacity-90 transition-opacity">
-                        <span class="truncate">Sign In</span>
-                    </button>
-                </div>
+                <button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:opacity-90">
+                    <span class="truncate">Sign In</span>
+                </button>
             </div>
         </header>
-
         <main class="flex w-full grow flex-col items-center px-4 py-16 sm:py-24">
-            <div class="flex w-full max-w-7xl flex-col items-center gap-16">
-                <!-- Hero Section -->
-                <section class="flex w-full flex-col items-center justify-center gap-8 text-center fade-in">
-                    <div class="flex flex-col gap-4">
-                        <div class="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2">
-                            <span class="text-sm font-medium text-primary">✨ AI-Powered Email Generation</span>
-                        </div>
-                        <h1 class="text-5xl font-black leading-tight tracking-[-0.033em] md:text-6xl text-[#000] dark:text-[#fff]">Write Emails That Sound <span class="text-transparent bg-clip-text gradient-bg">Human</span></h1>
-                        <h2 class="max-w-3xl text-xl font-normal leading-normal text-text-light dark:text-text-dark/80">Mailora humanizes AI-generated content to create authentic, engaging, and effective communication in 10+ languages.</h2>
+            <div class="flex w-full max-w-6xl flex-col items-center gap-16">
+                <section class="flex w-full flex-col items-center justify-center gap-6 text-center">
+                    <div class="flex flex-col gap-2">
+                        <h1 class="text-4xl font-black leading-tight tracking-[-0.033em] md:text-5xl text-[#000] dark:text-[#fff]">Write emails that sound real.</h1>
+                        <h2 class="max-w-2xl text-base font-normal leading-normal text-text-light dark:text-text-dark/80">Mailora humanizes AI-generated content to create authentic, engaging, and effective communication.</h2>
                     </div>
-                    
-                    <div class="flex w-full max-w-2xl flex-col items-center gap-3 sm:flex-row">
-                        <input id="hero-input" class="form-input h-14 flex-1 rounded-xl border border-border-light bg-background-light dark:border-border-dark dark:bg-background-dark/50 text-base font-normal leading-normal placeholder:text-text-light/50 dark:placeholder:text-text-dark/50 focus:border-primary focus:ring-primary/50 shadow-sm" placeholder="Describe your email purpose in any language…" value=""/>
-                        <button id="hero-generate" class="flex w-full min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-14 px-6 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] sm:w-auto hover:opacity-90 transition-all duration-200 shadow-lg hover:shadow-xl">
+                    <div class="flex w-full max-w-xl flex-col items-center gap-2 sm:flex-row">
+                        <input id="hero-input" class="form-input h-14 flex-1 rounded-lg border border-border-light bg-background-light dark:border-border-dark dark:bg-background-dark/50 text-base font-normal leading-normal placeholder:text-text-light/50 dark:placeholder:text-text-dark/50 focus:border-primary focus:ring-primary/50" placeholder="Describe your email purpose…" value=""/>
+                        <button id="hero-generate" class="flex w-full min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-14 px-5 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] sm:w-auto hover:opacity-90">
                             <span class="truncate">Generate Email</span>
                         </button>
                     </div>
-                    
-                    <div class="flex flex-wrap items-center justify-center gap-4 text-sm text-text-light/70 dark:text-text-dark/70">
-                        <div class="flex items-center gap-2">
-                            <span class="material-symbols-outlined text-success text-base">check_circle</span>
-                            <span>10+ Languages</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <span class="material-symbols-outlined text-success text-base">check_circle</span>
-                            <span>Professional Tone</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <span class="material-symbols-outlined text-success text-base">check_circle</span>
-                            <span>Human-like Quality</span>
-                        </div>
-                    </div>
                 </section>
 
-                <!-- Ad Space - Top Banner -->
-                <div class="ad-container w-full max-w-4xl">
-                    <div class="ad-label">Advertisement</div>
-                    <div id="ad-top-banner" class="ad-placeholder">
-                        <!-- Adsterra ad code will go here -->
-                        <div class="text-text-light/50 dark:text-text-dark/50 text-sm">
-                            Ad space available - Perfect for email-related products
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Generator Interface -->
-                <section class="grid w-full grid-cols-1 gap-8 lg:grid-cols-2 fade-in">
-                    <!-- Input Side -->
-                    <div class="flex flex-col gap-6 rounded-2xl border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark/30 p-8 shadow-sm">
-                        <div class="flex items-center gap-3">
-                            <div class="flex size-10 items-center justify-center rounded-lg bg-primary/10">
-                                <span class="material-symbols-outlined text-primary">create</span>
-                            </div>
-                            <div>
-                                <h2 class="text-2xl font-bold leading-tight tracking-[-0.015em] text-[#000] dark:text-[#fff]">Craft Your Email</h2>
-                                <p class="text-sm text-text-light/70 dark:text-text-dark/70">Customize every aspect of your email</p>
-                            </div>
-                        </div>
-                        
-                        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                            <label class="flex flex-col gap-3 sm:col-span-1">
+                <section class="grid w-full grid-cols-1 gap-8 md:grid-cols-2">
+                    <div class="flex flex-col gap-4 rounded-xl border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark/30 p-6">
+                        <h2 class="text-xl font-bold leading-tight tracking-[-0.015em] text-[#000] dark:text-[#fff]">Craft Your Email</h2>
+                        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                            <label class="flex flex-col gap-2 sm:col-span-1">
                                 <p class="text-sm font-medium leading-normal">Recipient Name</p>
                                 <input id="recipient-name" class="form-input h-12 flex-1 rounded-lg border border-border-light bg-background-light dark:border-border-dark dark:bg-background-dark/50 p-3 text-base font-normal leading-normal placeholder:text-text-light/50 dark:placeholder:text-text-dark/50 focus:border-primary focus:ring-primary/50" placeholder="Enter recipient's name" value=""/>
                             </label>
-                            
-                            <label class="flex flex-col gap-3 sm:col-span-1">
-                                <p class="text-sm font-medium leading-normal">Email Subject</p>
+                            <label class="flex flex-col gap-2 sm:col-span-1">
+                                <p class="text-sm font-medium leading-normal">Email Subject or Purpose</p>
                                 <input id="email-subject" class="form-input h-12 flex-1 rounded-lg border border-border-light bg-background-light dark:border-border-dark dark:bg-background-dark/50 p-3 text-base font-normal leading-normal placeholder:text-text-light/50 dark:placeholder:text-text-dark/50 focus:border-primary focus:ring-primary/50" placeholder="e.g., Follow up on our meeting" value=""/>
                             </label>
-                            
-                            <label class="flex flex-col gap-3 sm:col-span-1">
+                            <label class="flex flex-col gap-2 sm:col-span-1">
                                 <p class="text-sm font-medium leading-normal">Language</p>
                                 <select id="email-language" class="form-select h-12 flex-1 appearance-none rounded-lg border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark/50 p-3 text-base font-normal leading-normal focus:border-primary focus:ring-primary/50">
-                                    <option value="en">🌐 English</option>
-                                    <option value="es">🇪🇸 Español</option>
-                                    <option value="fr">🇫🇷 Français</option>
-                                    <option value="de">🇩🇪 Deutsch</option>
-                                    <option value="hi">🇮🇳 हिन्दी</option>
-                                    <option value="ja">🇯🇵 日本語</option>
-                                    <option value="zh">🇨🇳 中文</option>
-                                    <option value="ar">🇸🇦 العربية</option>
-                                    <option value="pt">🇵🇹 Português</option>
-                                    <option value="ru">🇷🇺 Русский</option>
+                                    <option value="en">English</option>
+                                    <option value="hi">Hindi</option>
+                                    <option value="es">Spanish</option>
+                                    <option value="fr">French</option>
+                                    <option value="de">German</option>
                                 </select>
                             </label>
-                            
-                            <label class="flex flex-col gap-3 sm:col-span-1">
+                            <label class="flex flex-col gap-2 sm:col-span-1">
                                 <p class="text-sm font-medium leading-normal">Tone</p>
                                 <select id="email-tone" class="form-select h-12 flex-1 appearance-none rounded-lg border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark/50 p-3 text-base font-normal leading-normal focus:border-primary focus:ring-primary/50">
                                     <option value="Professional">Professional</option>
@@ -295,220 +138,82 @@
                                     <option value="Friendly">Friendly</option>
                                     <option value="Formal">Formal</option>
                                     <option value="Enthusiastic">Enthusiastic</option>
-                                    <option value="Persuasive">Persuasive</option>
-                                    <option value="Empathetic">Empathetic</option>
                                 </select>
                             </label>
-                            
-                            <label class="flex flex-col gap-3 sm:col-span-2">
-                                <p class="text-sm font-medium leading-normal">Personal Context (optional)</p>
-                                <textarea id="personal-note" class="form-textarea min-h-[120px] flex-1 resize-none rounded-lg border border-border-light bg-background-light dark:border-border-dark dark:bg-background-dark/50 p-3 text-base font-normal leading-normal placeholder:text-text-light/50 dark:placeholder:text-text-dark/50 focus:border-primary focus:ring-primary/50" placeholder="Add any specific details, context, or key points to include..."></textarea>
+                            <label class="flex flex-col gap-2 sm:col-span-2">
+                                <p class="text-sm font-medium leading-normal">Personal Note (optional)</p>
+                                <textarea id="personal-note" class="form-textarea min-h-[120px] flex-1 resize-none rounded-lg border border-border-light bg-background-light dark:border-border-dark dark:bg-background-dark/50 p-3 text-base font-normal leading-normal placeholder:text-text-light/50 dark:placeholder:text-text-dark/50 focus:border-primary focus:ring-primary/50" placeholder="Add any specific details or context here..."></textarea>
                             </label>
-                            
-                            <div class="flex flex-col gap-3 sm:col-span-2">
-                                <p class="text-sm font-medium leading-normal">Email Length</p>
-                                <div class="flex w-full rounded-lg border border-border-light dark:border-border-dark p-1 bg-background-light dark:bg-background-dark/50">
-                                    <button id="length-short" class="length-btn flex-1 rounded-md py-3 text-sm font-semibold text-text-light dark:text-text-dark/80 bg-background-light dark:bg-background-dark/20 hover:bg-gray-100 dark:hover:bg-background-dark/40 transition-colors" data-length="short">
-                                        Short
-                                        <div class="text-xs font-normal mt-1 opacity-70">3-4 sentences</div>
-                                    </button>
-                                    <button id="length-medium" class="length-btn flex-1 rounded-md py-3 text-sm font-semibold text-white bg-secondary" data-length="medium">
-                                        Medium
-                                        <div class="text-xs font-normal mt-1 opacity-90">5-7 sentences</div>
-                                    </button>
-                                    <button id="length-long" class="length-btn flex-1 rounded-md py-3 text-sm font-semibold text-text-light dark:text-text-dark/80 bg-background-light dark:bg-background-dark/20 hover:bg-gray-100 dark:hover:bg-background-dark/40 transition-colors" data-length="long">
-                                        Long
-                                        <div class="text-xs font-normal mt-1 opacity-70">8-10 sentences</div>
-                                    </button>
+                            <div class="flex flex-col gap-2 sm:col-span-2">
+                                <p class="text-sm font-medium leading-normal">Length</p>
+                                <div class="flex w-full rounded-lg border border-border-light dark:border-border-dark p-1">
+                                    <button id="length-short" class="length-btn flex-1 rounded-md py-2 text-sm font-semibold text-text-light dark:text-text-dark/80 bg-background-light dark:bg-background-dark/20 hover:bg-gray-100 dark:hover:bg-background-dark/40" data-length="short">Short</button>
+                                    <button id="length-medium" class="length-btn flex-1 rounded-md py-2 text-sm font-semibold text-white bg-secondary" data-length="medium">Medium</button>
+                                    <button id="length-long" class="length-btn flex-1 rounded-md py-2 text-sm font-semibold text-text-light dark:text-text-dark/80 bg-background-light dark:bg-background-dark/20 hover:bg-gray-100 dark:hover:bg-background-dark/40" data-length="long">Long</button>
                                 </div>
                             </div>
                         </div>
-                        
-                        <button id="humanize-btn" class="mt-2 flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-6 bg-secondary text-white text-base font-bold leading-normal tracking-[0.015em] hover:opacity-90 transition-all duration-200 shadow-lg hover:shadow-xl">
-                            <span class="truncate">✨ Generate Professional Email</span>
+                        <button id="humanize-btn" class="mt-4 flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-secondary text-white text-base font-bold leading-normal tracking-[0.015em] hover:opacity-90">
+                            <span class="truncate">Generate Email</span>
                         </button>
                     </div>
 
-                    <!-- Output Side -->
-                    <div class="flex flex-col gap-6 rounded-2xl border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark/30 p-8 shadow-sm">
+                    <div class="flex flex-col gap-4 rounded-xl border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark/30 p-6">
                         <div class="flex items-center justify-between">
-                            <div class="flex items-center gap-3">
-                                <div class="flex size-10 items-center justify-center rounded-lg bg-success/10">
-                                    <span class="material-symbols-outlined text-success">drafts</span>
-                                </div>
-                                <div>
-                                    <h2 class="text-2xl font-bold leading-tight tracking-[-0.015em] text-[#000] dark:text-[#fff]">Your Generated Email</h2>
-                                    <p id="email-metadata" class="text-sm text-text-light/70 dark:text-text-dark/70">Ready to use</p>
-                                </div>
-                            </div>
+                            <h2 class="text-xl font-bold leading-tight tracking-[-0.015em] text-[#000] dark:text-[#fff]">Your Generated Email</h2>
                             <div class="flex items-center gap-2">
-                                <button id="copy-btn" class="flex size-9 items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-background-dark/80 transition-colors" title="Copy to clipboard">
+                                <button id="copy-btn" class="flex size-9 items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-background-dark/80">
                                     <span class="material-symbols-outlined text-xl text-text-light dark:text-text-dark/80">content_copy</span>
                                 </button>
-                                <button id="refresh-btn" class="flex size-9 items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-background-dark/80 transition-colors" title="Regenerate">
+                                <button id="refresh-btn" class="flex size-9 items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-background-dark/80">
                                     <span class="material-symbols-outlined text-xl text-text-light dark:text-text-dark/80">refresh</span>
                                 </button>
-                                <button id="download-btn" class="flex size-9 items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-background-dark/80 transition-colors" title="Download as text">
+                                <button id="download-btn" class="flex size-9 items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-background-dark/80">
                                     <span class="material-symbols-outlined text-xl text-text-light dark:text-text-dark/80">download</span>
                                 </button>
                             </div>
                         </div>
-                        
-                        <div id="email-output" class="prose prose-sm dark:prose-invert min-h-[400px] flex-1 rounded-xl border-2 border-dashed border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark/50 p-6 leading-relaxed">
-                            <div class="flex flex-col items-center justify-center h-full text-center text-text-light/50 dark:text-text-dark/50">
-                                <span class="material-symbols-outlined text-4xl mb-4">drafts</span>
-                                <p class="text-lg font-medium mb-2">Your email will appear here</p>
-                                <p class="text-sm">Fill out the form and click "Generate Professional Email"</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex flex-wrap gap-3">
-                            <div class="flex-1 min-w-[200px]">
-                                <p class="text-sm font-medium text-text-light/70 dark:text-text-dark/70 mb-2">Email Quality</p>
-                                <div class="flex items-center gap-2">
-                                    <div class="flex-1 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                                        <div class="bg-success rounded-full h-2" style="width: 95%"></div>
-                                    </div>
-                                    <span class="text-sm font-medium text-success">95%</span>
-                                </div>
-                            </div>
-                            <div class="flex-1 min-w-[200px]">
-                                <p class="text-sm font-medium text-text-light/70 dark:text-text-dark/70 mb-2">Human-like Score</p>
-                                <div class="flex items-center gap-2">
-                                    <div class="flex-1 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                                        <div class="bg-accent rounded-full h-2" style="width: 92%"></div>
-                                    </div>
-                                    <span class="text-sm font-medium text-accent">92%</span>
-                                </div>
-                            </div>
+                        <div id="email-output" class="prose prose-sm dark:prose-invert min-h-[300px] flex-1 rounded-lg border border-border-light bg-background-light dark:border-border-dark dark:bg-background-dark/50 p-4 leading-relaxed">
+                            <p>Your generated email will appear here...</p>
                         </div>
                     </div>
                 </section>
-
-                <!-- Ad Space - Middle Banner -->
-                <div class="ad-container w-full max-w-4xl">
-                    <div class="ad-label">Sponsored</div>
-                    <div id="ad-middle-banner" class="ad-placeholder">
-                        <!-- Adsterra ad code will go here -->
-                        <div class="text-text-light/50 dark:text-text-dark/50 text-sm">
-                            Premium email tools - Special offer for our users
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Features Section -->
-                <section id="features" class="w-full fade-in">
-                    <div class="text-center mb-12">
-                        <h2 class="text-4xl font-black leading-tight tracking-[-0.033em] text-[#000] dark:text-[#fff] mb-4">Why Choose Mailora?</h2>
-                        <p class="text-xl text-text-light/70 dark:text-text-dark/70 max-w-3xl mx-auto">Advanced features designed for global professionals and businesses</p>
-                    </div>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <div class="flex flex-col gap-4 p-6 rounded-2xl border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark/30 hover:shadow-lg transition-all duration-300">
-                            <div class="flex size-12 items-center justify-center rounded-xl bg-primary/10">
-                                <span class="material-symbols-outlined text-primary">translate</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-[#000] dark:text-[#fff]">Multi-Language Support</h3>
-                            <p class="text-text-light/70 dark:text-text-dark/70">Generate professional emails in 10+ languages with native-level quality and cultural appropriateness.</p>
-                        </div>
-                        
-                        <div class="flex flex-col gap-4 p-6 rounded-2xl border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark/30 hover:shadow-lg transition-all duration-300">
-                            <div class="flex size-12 items-center justify-center rounded-xl bg-secondary/10">
-                                <span class="material-symbols-outlined text-secondary">tone</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-[#000] dark:text-[#fff]">Tone Customization</h3>
-                            <p class="text-text-light/70 dark:text-text-dark/70">Choose from 7 different tones to match your audience and communication goals perfectly.</p>
-                        </div>
-                        
-                        <div class="flex flex-col gap-4 p-6 rounded-2xl border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark/30 hover:shadow-lg transition-all duration-300">
-                            <div class="flex size-12 items-center justify-center rounded-xl bg-accent/10">
-                                <span class="material-symbols-outlined text-accent">auto_awesome</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-[#000] dark:text-[#fff]">AI-Powered Quality</h3>
-                            <p class="text-text-light/70 dark:text-text-dark/70">Advanced AI ensures your emails sound human, professional, and contextually appropriate every time.</p>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Ad Space - Bottom Banner -->
-                <div class="ad-container w-full max-w-4xl">
-                    <div class="ad-label">Advertisement</div>
-                    <div id="ad-bottom-banner" class="ad-placeholder">
-                        <!-- Adsterra ad code will go here -->
-                        <div class="text-text-light/50 dark:text-text-dark/50 text-sm">
-                            Boost your email productivity - Try our premium features
-                        </div>
-                    </div>
-                </div>
             </div>
         </main>
-
-        <!-- Footer -->
-        <footer class="flex w-full justify-center border-t border-solid border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark/30 mt-20">
-            <div class="flex w-full max-w-7xl flex-col items-center justify-between gap-6 px-4 py-8 text-sm text-text-light dark:text-text-dark/80 sm:flex-row">
-                <div class="flex flex-col gap-2">
-                    <div class="flex items-center gap-2">
-                        <div class="size-6 text-primary">
-                            <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" fill="currentColor"></path>
-                            </svg>
-                        </div>
-                        <span class="font-bold">Mailora</span>
-                    </div>
-                    <p>© 2024 Mailora. All rights reserved.</p>
-                </div>
-                
-                <div class="flex items-center gap-6">
-                    <a class="hover:text-primary transition-colors" href="#">
-                        <svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+        <footer class="flex w-full justify-center border-t border-solid border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark/30">
+            <div class="flex w-full max-w-6xl flex-col items-center justify-between gap-4 px-4 py-6 text-sm text-text-light dark:text-text-dark/80 sm:flex-row">
+                <p>© 2024 Mailora. All rights reserved.</p>
+                <div class="flex items-center gap-4">
+                    <a class="hover:text-primary" href="#">
+                        <svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewbox="0 0 24 24">
                             <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path>
                         </svg>
                     </a>
-                    <a class="hover:text-primary transition-colors" href="#">
-                        <svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                    <a class="hover:text-primary" href="#">
+                        <svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewbox="0 0 24 24">
                             <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616v.064c0 2.295 1.634 4.208 3.803 4.649-.6.164-1.213.2-1.85.071.609 1.923 2.384 3.32 4.491 3.359-2.013 1.564-4.545 2.44-7.24 2.05 2.089 1.342 4.584 2.121 7.24 2.121 8.812 0 13.635-7.497 13.25-13.999.93-.672 1.748-1.512 2.4-2.487z"></path>
                         </svg>
                     </a>
                 </div>
-                
-                <p>Built with ❤️ for global professionals</p>
+                <p>Built by Sahil</p>
             </div>
         </footer>
     </div>
 
-    <!-- Toast Notification -->
     <div id="toast" class="toast"></div>
 
     <script>
-       // Configuration - FRONTEND MEIN YE UPDATE KARO
-const CONFIG = {
-    API_BASE_URL: 'https://your-render-app.onrender.com/api', // Yaha apna Render URL daalo
-    SUPPORTED_LANGUAGES: {
-        'en': 'English',
-        'es': 'Español', 
-        'fr': 'Français',
-        'de': 'Deutsch',
-        'hi': 'हिन्दी',
-        'ja': '日本語',
-        'zh': '中文',
-        'ar': 'العربية',
-        'pt': 'Português',
-        'ru': 'Русский'
-    }
-};
+        const CONFIG = {
+            API_BASE_URL: 'https://your-render-app.onrender.com',
+        };
 
-        // Email Generator Class
         class EmailGenerator {
             constructor() {
                 this.currentLength = 'medium';
-                this.isGenerating = false;
-                this.currentLanguage = 'en';
                 this.initEventListeners();
-                this.initTheme();
             }
 
             initEventListeners() {
-                // Hero section generate button
                 document.getElementById('hero-generate').addEventListener('click', () => {
                     const purpose = document.getElementById('hero-input').value;
                     if (purpose) {
@@ -519,19 +224,16 @@ const CONFIG = {
                     }
                 });
 
-                // Humanize button
                 document.getElementById('humanize-btn').addEventListener('click', () => {
                     this.generateEmail();
                 });
 
-                // Length buttons
                 document.querySelectorAll('.length-btn').forEach(btn => {
                     btn.addEventListener('click', (e) => {
-                        this.setLength(e.currentTarget.dataset.length);
+                        this.setLength(e.target.dataset.length);
                     });
                 });
 
-                // Output buttons
                 document.getElementById('copy-btn').addEventListener('click', () => {
                     this.copyToClipboard();
                 });
@@ -544,25 +246,6 @@ const CONFIG = {
                     this.downloadEmail();
                 });
 
-                // Global language selector
-                document.getElementById('global-language').addEventListener('change', (e) => {
-                    this.currentLanguage = e.target.value;
-                    document.getElementById('email-language').value = e.target.value;
-                    this.showToast(`Language changed to ${CONFIG.SUPPORTED_LANGUAGES[e.target.value]}`, 'info');
-                });
-
-                // Email language selector
-                document.getElementById('email-language').addEventListener('change', (e) => {
-                    this.currentLanguage = e.target.value;
-                    document.getElementById('global-language').value = e.target.value;
-                });
-
-                // Theme toggle
-                document.getElementById('theme-toggle').addEventListener('click', () => {
-                    this.toggleTheme();
-                });
-
-                // Enter key in hero input
                 document.getElementById('hero-input').addEventListener('keypress', (e) => {
                     if (e.key === 'Enter') {
                         document.getElementById('hero-generate').click();
@@ -570,30 +253,8 @@ const CONFIG = {
                 });
             }
 
-            initTheme() {
-                // Check for saved theme or prefer OS theme
-                const savedTheme = localStorage.getItem('theme');
-                const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                
-                if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
-                    document.documentElement.classList.add('dark');
-                }
-            }
-
-            toggleTheme() {
-                const isDark = document.documentElement.classList.toggle('dark');
-                localStorage.setItem('theme', isDark ? 'dark' : 'light');
-                
-                const icon = document.querySelector('#theme-toggle .material-symbols-outlined');
-                icon.textContent = isDark ? 'light_mode' : 'dark_mode';
-                
-                this.showToast(`Switched to ${isDark ? 'dark' : 'light'} mode`, 'info');
-            }
-
             setLength(length) {
                 this.currentLength = length;
-                
-                // Update button styles
                 document.querySelectorAll('.length-btn').forEach(btn => {
                     if (btn.dataset.length === length) {
                         btn.classList.remove('text-text-light', 'dark:text-text-dark/80', 'bg-background-light', 'dark:bg-background-dark/20');
@@ -606,33 +267,21 @@ const CONFIG = {
             }
 
             async generateEmail() {
-                if (this.isGenerating) {
-                    this.showToast('Please wait, generation in progress...', 'warning');
-                    return;
-                }
-                
                 const recipientName = document.getElementById('recipient-name').value || '[Recipient Name]';
                 const subject = document.getElementById('email-subject').value;
-                const purpose = document.getElementById('hero-input').value;
                 const tone = document.getElementById('email-tone').value;
                 const personalNote = document.getElementById('personal-note').value;
-                const language = this.currentLanguage;
+                const language = document.getElementById('email-language').value;
                 
-                if (!subject && !purpose) {
-                    this.showToast('Please enter an email subject or purpose', 'error');
+                if (!subject) {
+                    this.showToast('Please enter an email subject', 'error');
                     return;
                 }
 
-                this.isGenerating = true;
-
-                // Show loading state
                 const humanizeBtn = document.getElementById('humanize-btn');
-                const originalContent = humanizeBtn.innerHTML;
-                humanizeBtn.innerHTML = '<div class="loading"></div> Generating...';
+                const originalText = humanizeBtn.querySelector('span').textContent;
+                humanizeBtn.querySelector('span').innerHTML = '<div class="loading"></div>';
                 humanizeBtn.disabled = true;
-
-                // Update metadata
-                document.getElementById('email-metadata').textContent = `Generating in ${CONFIG.SUPPORTED_LANGUAGES[language]}...`;
 
                 try {
                     const response = await fetch(`${CONFIG.API_BASE_URL}/generate-email`, {
@@ -642,7 +291,7 @@ const CONFIG = {
                         },
                         body: JSON.stringify({
                             recipientName,
-                            subject: subject || purpose,
+                            subject,
                             tone,
                             personalNote,
                             length: this.currentLength,
@@ -652,73 +301,43 @@ const CONFIG = {
 
                     const data = await response.json();
 
-                    if (!response.ok) {
+                    if (data.success) {
+                        this.displayEmail(data.email);
+                        this.showToast('Email generated successfully!', 'success');
+                    } else {
                         throw new Error(data.error || 'Failed to generate email');
                     }
 
-                    if (data.success) {
-                        this.displayEmail(data.email);
-                        document.getElementById('email-metadata').textContent = 
-                            `Generated in ${CONFIG.SUPPORTED_LANGUAGES[language]} • ${this.currentLength} • ${tone}`;
-                        this.showToast('Email generated successfully!', 'success');
-                    } else {
-                        throw new Error(data.error || 'Generation failed');
-                    }
-
                 } catch (error) {
-                    console.error('Email generation error:', error);
-                    this.showToast(error.message || 'Failed to generate email. Please try again.', 'error');
-                    
-                    // Fallback to client-side generation
-                    const fallbackContent = this.createFallbackEmail(recipientName, subject || purpose, tone, personalNote, language);
+                    console.error('Error:', error);
+                    this.showToast('Failed to generate email. Using fallback.', 'error');
+                    const fallbackContent = this.createFallbackEmail(recipientName, subject, tone, personalNote, language);
                     this.displayEmail(fallbackContent);
-                    document.getElementById('email-metadata').textContent = `Generated offline in ${CONFIG.SUPPORTED_LANGUAGES[language]}`;
-                    this.showToast('Using offline generation mode', 'warning');
                 } finally {
-                    // Reset button
-                    humanizeBtn.innerHTML = originalContent;
+                    humanizeBtn.querySelector('span').textContent = originalText;
                     humanizeBtn.disabled = false;
-                    this.isGenerating = false;
                 }
             }
 
             createFallbackEmail(recipientName, subject, tone, personalNote, language) {
-                // Basic fallback templates for offline mode
                 const templates = {
                     'en': `Subject: ${subject}\n\nDear ${recipientName},\n\nI hope this email finds you well.\n\n${personalNote ? personalNote + '\n\n' : ''}Thank you for your time and consideration.\n\nBest regards,\n[Your Name]`,
-                    'es': `Asunto: ${subject}\n\nEstimado/a ${recipientName},\n\nEspero que este correo le encuentre bien.\n\n${personalNote ? personalNote + '\n\n' : ''}Gracias por su tiempo y consideración.\n\nAtentamente,\n[Su Nombre]`,
-                    'fr': `Objet: ${subject}\n\nCher ${recipientName},\n\nJ'espère que ce courriel vous trouvera en bonne santé.\n\n${personalNote ? personalNote + '\n\n' : ''}Merci pour votre temps et votre considération.\n\nCordialement,\n[Votre Nom]`
+                    'hi': `विषय: ${subject}\n\nप्रिय ${recipientName},\n\nमुझे आशा है कि यह ईमेल आपको अच्छी तरह मिलेगा।\n\n${personalNote ? personalNote + '\n\n' : ''}आपके समय और विचार के लिए धन्यवाद।\n\nसादर,\n[आपका नाम]`
                 };
-
                 return templates[language] || templates['en'];
             }
 
             displayEmail(content) {
                 const emailOutput = document.getElementById('email-output');
-                // Convert line breaks to HTML and ensure proper formatting
-                const htmlContent = content
-                    .replace(/\n/g, '<br>')
-                    .replace(/Subject:\s*(.*?)(<br>|$)/i, '<strong>Subject: $1</strong><br><br>')
-                    .replace(/Asunto:\s*(.*?)(<br>|$)/i, '<strong>Asunto: $1</strong><br><br>')
-                    .replace(/Objet:\s*(.*?)(<br>|$)/i, '<strong>Objet: $1</strong><br><br>');
-                
+                const htmlContent = content.replace(/\n/g, '<br>');
                 emailOutput.innerHTML = htmlContent;
-                emailOutput.classList.remove('border-dashed');
-                emailOutput.classList.add('border-solid', 'border-primary/20');
             }
 
             copyToClipboard() {
                 const emailContent = document.getElementById('email-output').textContent;
-                
-                if (!emailContent || emailContent.includes('Your email will appear here')) {
-                    this.showToast('No email content to copy', 'warning');
-                    return;
-                }
-
                 navigator.clipboard.writeText(emailContent).then(() => {
                     this.showToast('Email copied to clipboard!', 'success');
                 }).catch(err => {
-                    console.error('Failed to copy: ', err);
                     this.showToast('Failed to copy email', 'error');
                 });
             }
@@ -726,101 +345,34 @@ const CONFIG = {
             downloadEmail() {
                 const emailContent = document.getElementById('email-output').textContent;
                 const subject = document.getElementById('email-subject').value || 'Generated Email';
-                
-                if (!emailContent || emailContent.includes('Your email will appear here')) {
-                    this.showToast('No email content to download', 'warning');
-                    return;
-                }
-
-                const blob = new Blob([emailContent], { type: 'text/plain; charset=utf-8' });
+                const blob = new Blob([emailContent], { type: 'text/plain' });
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement('a');
                 a.href = url;
-                a.download = `${subject.replace(/\s+/g, '_')}_${new Date().getTime()}.txt`;
+                a.download = `${subject.replace(/\s+/g, '_')}.txt`;
                 document.body.appendChild(a);
                 a.click();
                 document.body.removeChild(a);
                 URL.revokeObjectURL(url);
-                
-                this.showToast('Email downloaded successfully!', 'success');
+                this.showToast('Email downloaded!', 'success');
             }
 
-            showToast(message, type = 'info') {
+            showToast(message, type = 'success') {
                 const toast = document.getElementById('toast');
                 toast.textContent = message;
                 toast.className = 'toast';
-                
-                // Remove existing type classes
-                toast.classList.remove('success', 'error', 'warning', 'info');
-                
-                // Add current type class
-                toast.classList.add(type);
+                if (type === 'error') toast.classList.add('error');
+                else if (type === 'warning') toast.classList.add('warning');
                 toast.classList.add('show');
-                
                 setTimeout(() => {
                     toast.classList.remove('show');
-                }, 4000);
+                }, 3000);
             }
         }
 
-        // Initialize the application
         document.addEventListener('DOMContentLoaded', () => {
-            window.emailGenerator = new EmailGenerator();
-            
-            // Add fade-in animation to elements
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('fade-in');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-
-            // Observe sections for animation
-            document.querySelectorAll('section').forEach(section => {
-                observer.observe(section);
-            });
-
-            console.log(`
-🌟 Mailora Frontend Loaded!
-📍 Multi-language Email Generator
-🌍 Supported Languages: ${Object.keys(CONFIG.SUPPORTED_LANGUAGES).length}
-🚀 Ready for professional email generation
-            `);
+            new EmailGenerator();
         });
-
-        // Adsterra Ad Integration Placeholder
-        class AdManager {
-            constructor() {
-                this.adSlots = ['ad-top-banner', 'ad-middle-banner', 'ad-bottom-banner'];
-            }
-
-            loadAds() {
-                // This will be replaced with actual Adsterra code
-                this.adSlots.forEach(slotId => {
-                    const slot = document.getElementById(slotId);
-                    if (slot) {
-                        // Placeholder for Adsterra ad code
-                        slot.innerHTML = `
-                            <div style="background: #f0f0f0; border: 1px dashed #ccc; padding: 20px; text-align: center; color: #666;">
-                                <div style="margin-bottom: 8px;">Ad Space</div>
-                                <div style="font-size: 12px;">Adsterra ads will be loaded here</div>
-                            </div>
-                        `;
-                    }
-                });
-            }
-        }
-
-        // Initialize ad manager
-        const adManager = new AdManager();
-        adManager.loadAds();
     </script>
 </body>
 </html>
